@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@200;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e6e9e7",
+                    "on-surface-variant": "#424843",
+                    "on-secondary-container": "#526576",
+                    "on-tertiary-fixed": "#3c0700",
+                    "surface-container": "#eceeec",
+                    "tertiary-fixed-dim": "#ffb4a2",
+                    "outline-variant": "#c2c8c1",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#4d6072",
+                    "surface-container-highest": "#e1e3e1",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#e87356",
+                    "on-tertiary-fixed-variant": "#822711",
+                    "secondary-fixed": "#d1e5f9",
+                    "inverse-primary": "#adcfb5",
+                    "on-primary-fixed-variant": "#304d39",
+                    "tertiary-fixed": "#ffdad2",
+                    "on-tertiary-container": "#5d1000",
+                    "tertiary": "#a23e26",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#173422",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f2f4f2",
+                    "surface": "#f8faf8",
+                    "secondary-fixed-dim": "#b5c9dd",
+                    "on-secondary-fixed": "#081d2c",
+                    "primary-fixed-dim": "#adcfb5",
+                    "on-background": "#191c1b",
+                    "on-secondary-fixed-variant": "#364959",
+                    "error-container": "#ffdad6",
+                    "primary": "#476550",
+                    "outline": "#727972",
+                    "surface-bright": "#f8faf8",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#cee2f6",
+                    "inverse-on-surface": "#eff1ef",
+                    "inverse-surface": "#2e3130",
+                    "primary-fixed": "#c9ebd0",
+                    "surface-tint": "#476550",
+                    "background": "#f8faf8",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#032110",
+                    "surface-variant": "#e1e3e1",
+                    "primary-container": "#7d9d85",
+                    "surface-dim": "#d8dad9",
+                    "on-surface": "#191c1b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "xl": "80px",
+                    "xs": "4px",
+                    "md": "24px",
+                    "container-max": "1200px",
+                    "sm": "12px",
+                    "lg": "48px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Manrope"],
+                    "display-timer-mobile": ["Manrope"],
+                    "display-timer": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-timer-mobile": ["80px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "200"}],
+                    "display-timer": ["120px", {"lineHeight": "120px", "letterSpacing": "-0.04em", "fontWeight": "200"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shadow-soft {
+            box-shadow: 0 10px 30px -5px rgba(82, 101, 118, 0.04);
+        }
+        .shadow-active {
+            box-shadow: 0 15px 40px -5px rgba(82, 101, 118, 0.08);
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: #e6e9e7;
+            height: 6px;
+            border-radius: 3px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            background: #476550;
+            border-radius: 50%;
+            margin-top: -7px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md transition-colors duration-500">
+<!-- Sidebar Navigation -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-surface-container-lowest shadow-sm flex flex-col gap-base p-md z-50">
+<div class="mb-lg">
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim tracking-tight">Serene Interval</h1>
+<p class="text-on-surface-variant opacity-70 font-body-md">Focusing...</p>
+</div>
+<nav class="flex flex-col gap-sm">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">timer</span>
+<span class="font-body-md text-body-md">Timer</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">checklist</span>
+<span class="font-body-md text-body-md">Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl font-semibold cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto flex items-center gap-3 p-4 bg-surface-container-high rounded-xl">
+<img alt="User profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" data-alt="A clean, high-resolution portrait of a modern professional with a warm, friendly expression, set against a blurred minimalist studio background. The lighting is soft and natural, emphasizing a calm and focused persona. The image conveys an atmosphere of quiet productivity and mindfulness consistent with a premium wellness application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0kFk3PmFzOGj47QHO1peWjf3wNvK963q5rUX8bjewXcjeFXZYcfeQB3WeFeB5wHWwAgfmRBz2og1eg7MkExtAFTdGJvoQQigmPBUwaGvXVvNF5fjZXFMIejF9inFyOfZNzYpFW82EJd0tgbzcRkgXsdvA8mgMFN9e-5_ciu7awUSmrBoTK2UNeDIigd_XfEum6HQZqvLIk8Uz5fri4G757uqiUSYXnSejJSRGBymln-3cSiSj5G1NpmmGJzCFrvIfKbozsNbcRayU"/>
+<div class="overflow-hidden">
+<p class="font-body-md font-semibold truncate">Alex Rivera</p>
+<p class="text-xs text-on-surface-variant truncate">Premium Member</p>
+</div>
+</div>
+</aside>
+<!-- Header -->
+<header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md sticky top-0 z-40 flex justify-between items-center h-16 px-md ml-64 transition-all duration-300 ease-in-out">
+<h2 class="font-headline-md text-headline-md font-semibold text-primary dark:text-primary-fixed-dim">Settings</h2>
+<div class="flex items-center gap-sm">
+<button class="p-2 rounded-full hover:bg-primary-container/20 transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-primary-container/20 transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 p-lg max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Duration Settings -->
+<section class="lg:col-span-7 space-y-lg">
+<div class="bg-white rounded-xl p-md shadow-soft border border-surface-variant/20">
+<div class="flex items-center gap-base mb-md text-primary">
+<span class="material-symbols-outlined">schedule</span>
+<h3 class="font-headline-md text-headline-md">Interval Durations</h3>
+</div>
+<div class="space-y-md">
+<!-- Focus Interval -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="font-body-md font-semibold text-on-surface">Focus</label>
+<span class="bg-primary-container/30 px-3 py-1 rounded-full text-primary font-bold text-sm" id="focus-val">25 min</span>
+</div>
+<input class="w-full h-2 rounded-lg" max="60" min="5" oninput="document.getElementById('focus-val').innerText = this.value + ' min'" step="5" type="range" value="25"/>
+</div>
+<!-- Short Break -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="font-body-md font-semibold text-on-surface">Short Break</label>
+<span class="bg-secondary-container/30 px-3 py-1 rounded-full text-secondary font-bold text-sm" id="short-val">5 min</span>
+</div>
+<input class="w-full h-2 rounded-lg" max="15" min="1" oninput="document.getElementById('short-val').innerText = this.value + ' min'" step="1" type="range" value="5"/>
+</div>
+<!-- Long Break -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="font-body-md font-semibold text-on-surface">Long Break</label>
+<span class="bg-tertiary-container/30 px-3 py-1 rounded-full text-tertiary font-bold text-sm" id="long-val">15 min</span>
+</div>
+<input class="w-full h-2 rounded-lg" max="45" min="10" oninput="document.getElementById('long-val').innerText = this.value + ' min'" step="5" type="range" value="15"/>
+</div>
+</div>
+</div>
+<!-- Personalization / Preferences -->
+<div class="bg-white rounded-xl p-md shadow-soft border border-surface-variant/20">
+<div class="flex items-center gap-base mb-md text-primary">
+<span class="material-symbols-outlined">tune</span>
+<h3 class="font-headline-md text-headline-md">Automation &amp; UI</h3>
+</div>
+<div class="space-y-sm">
+<!-- Toggle: Auto-start Breaks -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Auto-start Breaks</span>
+<span class="text-xs text-on-surface-variant">Switch to break timer automatically</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Toggle: Auto-start Focus -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Auto-start Focus</span>
+<span class="text-xs text-on-surface-variant">Begin focus session after a break</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Toggle: Dark Mode -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Dark Mode</span>
+<span class="text-xs text-on-surface-variant">Toggle light or dark interface theme</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" id="dark-mode-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Notifications & Audio -->
+<aside class="lg:col-span-5 space-y-lg">
+<div class="bg-white rounded-xl p-md shadow-soft border border-surface-variant/20">
+<div class="flex items-center gap-base mb-md text-primary">
+<span class="material-symbols-outlined">volume_up</span>
+<h3 class="font-headline-md text-headline-md">Audio &amp; Alerts</h3>
+</div>
+<div class="space-y-md">
+<!-- Toggle: Sound Notifications -->
+<div class="flex items-center justify-between p-sm bg-surface-container-low rounded-lg">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Sound Notifications</span>
+<span class="text-xs text-on-surface-variant">Play alert sound when timer ends</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Sound Selection -->
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Notification Tone</label>
+<div class="grid grid-cols-1 gap-sm">
+<button class="flex items-center justify-between px-4 py-3 bg-primary/5 text-primary border-2 border-primary rounded-xl text-left font-semibold group transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">music_note</span>
+<span>Gentle Chime</span>
+</div>
+<span class="material-symbols-outlined text-sm">check_circle</span>
+</button>
+<button class="flex items-center justify-between px-4 py-3 bg-surface-container hover:bg-surface-container-high transition-colors rounded-xl text-left font-medium text-on-surface-variant group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">music_note</span>
+<span>Soft Breeze</span>
+</div>
+</button>
+<button class="flex items-center justify-between px-4 py-3 bg-surface-container hover:bg-surface-container-high transition-colors rounded-xl text-left font-medium text-on-surface-variant group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">music_note</span>
+<span>Morning Mist</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Volume Slider -->
+<div class="space-y-xs pt-base">
+<div class="flex justify-between items-center">
+<label class="font-body-md font-semibold text-on-surface">Alarm Volume</label>
+<span class="text-sm font-bold text-on-surface-variant">75%</span>
+</div>
+<input class="w-full h-2 rounded-lg" max="100" min="0" type="range" value="75"/>
+</div>
+</div>
+</div>
+<!-- Integration Card -->
+<div class="bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-xl p-md shadow-active relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-headline-md text-headline-md mb-xs">Daily Sync</h4>
+<p class="font-body-md opacity-90 mb-md">Connect your Google Calendar to automatically block out focus sessions based on your availability.</p>
+<button class="bg-white text-primary px-6 py-2 rounded-full font-bold hover:shadow-lg active:scale-95 transition-all">Connect Now</button>
+</div>
+<div class="absolute -right-10 -bottom-10 opacity-20 transform rotate-12 group-hover:rotate-0 transition-transform duration-700">
+<span class="material-symbols-outlined !text-[120px]">calendar_today</span>
+</div>
+</div>
+</aside>
+</div>
+<footer class="mt-xl flex justify-end gap-md">
+<button class="px-8 py-3 rounded-xl border border-outline text-on-surface hover:bg-surface-container transition-colors font-semibold">Discard Changes</button>
+<button class="px-8 py-3 rounded-xl bg-primary text-white shadow-active hover:brightness-110 active:scale-95 transition-all font-semibold">Save Configuration</button>
+</footer>
+</main>
+<script>
+        // Micro-interactions and Dark Mode toggle simulation
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('change', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Add ripple-like effect on button clicks
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                let ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body></html>

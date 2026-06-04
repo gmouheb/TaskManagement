@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Serene Interval - Focus Timer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@200;500;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e6e9e7",
+                        "on-surface-variant": "#424843",
+                        "on-secondary-container": "#526576",
+                        "on-tertiary-fixed": "#3c0700",
+                        "surface-container": "#eceeec",
+                        "tertiary-fixed-dim": "#ffb4a2",
+                        "outline-variant": "#c2c8c1",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#4d6072",
+                        "surface-container-highest": "#e1e3e1",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#e87356",
+                        "on-tertiary-fixed-variant": "#822711",
+                        "secondary-fixed": "#d1e5f9",
+                        "inverse-primary": "#adcfb5",
+                        "on-primary-fixed-variant": "#304d39",
+                        "tertiary-fixed": "#ffdad2",
+                        "on-tertiary-container": "#5d1000",
+                        "tertiary": "#a23e26",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#173422",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f2f4f2",
+                        "surface": "#f8faf8",
+                        "secondary-fixed-dim": "#b5c9dd",
+                        "on-secondary-fixed": "#081d2c",
+                        "primary-fixed-dim": "#adcfb5",
+                        "on-background": "#191c1b",
+                        "on-secondary-fixed-variant": "#364959",
+                        "error-container": "#ffdad6",
+                        "primary": "#476550",
+                        "outline": "#727972",
+                        "surface-bright": "#f8faf8",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#cee2f6",
+                        "inverse-on-surface": "#eff1ef",
+                        "inverse-surface": "#2e3130",
+                        "primary-fixed": "#c9ebd0",
+                        "surface-tint": "#476550",
+                        "background": "#f8faf8",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#032110",
+                        "surface-variant": "#e1e3e1",
+                        "primary-container": "#7d9d85",
+                        "surface-dim": "#d8dad9",
+                        "on-surface": "#191c1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "container-max": "1200px",
+                        "sm": "12px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "display-timer-mobile": ["Manrope"],
+                        "display-timer": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-timer-mobile": ["80px", { "lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "200" }],
+                        "display-timer": ["120px", { "lineHeight": "120px", "letterSpacing": "-0.04em", "fontWeight": "200" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #f8faf8; }
+        .timer-progress-ring {
+            transform: rotate(-90deg);
+            transition: stroke-dashoffset 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .soft-elevation {
+            box-shadow: 0 10px 30px -10px rgba(71, 101, 80, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Side Navigation Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-surface-container-lowest flex flex-col gap-base p-md shadow-sm z-50">
+<div class="mb-lg">
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim tracking-tight font-extrabold">Serene Interval</h1>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">Focusing...</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<!-- Active Tab -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl font-semibold cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="timer">timer</span>
+<span>Timer</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="checklist">checklist</span>
+<span>Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto flex items-center gap-3 p-4 rounded-xl hover:bg-surface-container-high transition-all duration-300 cursor-pointer">
+<img alt="User profile" class="w-8 h-8 rounded-full bg-secondary-container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt7PlbUQxJqiSMVhk5UfxE2mLsXorVudNHWjllQxqhL8Wp_qbgeS4e_m9bOr7rGRpCYW85NP9UPHZ5elfxthrj6dWKhYLZ7Ilzgg_9RVFSs0AdAG-vUF_zkaoJ5P9_V9ibb8Y13cFdo5xIC2ftIdDuDxALHPecxqdxkEezlcPfP4TLPNSJ5twFMd1r9JOmxYmk4Y4abwNNXCQ07js_b_hBNWyV2a54yRnDr_whnGOk-W5mbIukHwrmLNZgwq1eBSuarJATeH5ZiTYN"/>
+<div>
+<p class="text-sm font-semibold">Alex Rivers</p>
+<p class="text-xs text-on-surface-variant">Pro Member</p>
+</div>
+</div>
+</aside>
+<!-- Top App Bar Shell -->
+<header class="flex justify-between items-center h-16 px-md ml-64 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<span class="text-primary font-bold font-headline-md text-headline-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 rounded-full hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-lg min-h-[calc(100vh-64px)] flex flex-col items-center">
+<div class="max-w-container-max w-full flex flex-col items-center space-y-xl">
+<!-- Mode Switcher -->
+<div class="inline-flex bg-surface-container-low p-1.5 rounded-full soft-elevation">
+<button class="px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 bg-primary text-on-primary" id="mode-focus">Focus</button>
+<button class="px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 text-on-surface-variant hover:bg-surface-variant/50" id="mode-short">Short Break</button>
+<button class="px-8 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 text-on-surface-variant hover:bg-surface-variant/50" id="mode-long">Long Break</button>
+</div>
+<!-- Timer Hero Section -->
+<div class="relative flex flex-col items-center justify-center">
+<!-- Circular Progress Background -->
+<div class="relative w-[480px] h-[480px] flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full" viewbox="0 0 100 100">
+<circle class="text-surface-container-high" cx="50" cy="50" fill="none" r="48" stroke="currentColor" stroke-width="0.5"></circle>
+<circle class="timer-progress-ring text-primary" cx="50" cy="50" fill="none" id="timer-ring" r="48" stroke="currentColor" stroke-dasharray="301.6" stroke-dashoffset="0" stroke-linecap="round" stroke-width="1.5"></circle>
+</svg>
+<!-- Timer Display -->
+<div class="text-center z-10">
+<span class="font-display-timer text-display-timer text-on-surface select-none" id="timer-display">25:00</span>
+<div class="mt-4">
+<p class="font-label-caps text-label-caps text-on-surface-variant tracking-[0.2em] uppercase">Current Task</p>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-1">Deep Work: UI Design System</h2>
+</div>
+</div>
+</div>
+</div>
+<!-- Timer Controls -->
+<div class="flex items-center gap-md">
+<button class="w-14 h-14 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container hover:border-primary transition-all duration-300 group" id="reset-btn">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="refresh">refresh</span>
+</button>
+<button class="bg-primary text-on-primary px-12 py-4 rounded-full font-semibold text-lg hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-3 soft-elevation" id="start-pause-btn">
+<span class="material-symbols-outlined" data-icon="play_arrow" id="btn-icon" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span id="btn-text">Start Focus</span>
+</button>
+<button class="w-14 h-14 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container hover:border-primary transition-all duration-300 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="skip_next">skip_next</span>
+</button>
+</div>
+<!-- Focus Session Stats / Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md w-full max-w-4xl mt-lg">
+<div class="bg-surface-container-lowest p-md rounded-xl soft-elevation flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">Focus Sessions</h3>
+<p class="text-2xl font-bold text-on-surface">4 / 8 Today</p>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl soft-elevation flex flex-col gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="schedule">schedule</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">Total Focus Time</h3>
+<p class="text-2xl font-bold text-on-surface">1h 45m</p>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl soft-elevation flex flex-col gap-2">
+<span class="material-symbols-outlined text-tertiary-container" data-icon="local_fire_department">local_fire_department</span>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">Current Streak</h3>
+<p class="text-2xl font-bold text-on-surface">5 Days</p>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple Timer Logic
+        let timeLeft = 1500; // 25 mins
+        let timerId = null;
+        let isRunning = false;
+        const totalTime = 1500;
+
+        const display = document.getElementById('timer-display');
+        const ring = document.getElementById('timer-ring');
+        const startBtn = document.getElementById('start-pause-btn');
+        const btnIcon = document.getElementById('btn-icon');
+        const btnText = document.getElementById('btn-text');
+        const resetBtn = document.getElementById('reset-btn');
+
+        function updateDisplay() {
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            display.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            
+            // Update Ring
+            const offset = 301.6 - (timeLeft / totalTime) * 301.6;
+            ring.style.strokeDashoffset = offset;
+        }
+
+        function toggleTimer() {
+            if (isRunning) {
+                clearInterval(timerId);
+                btnIcon.textContent = 'play_arrow';
+                btnText.textContent = 'Resume Focus';
+            } else {
+                timerId = setInterval(() => {
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        updateDisplay();
+                    } else {
+                        clearInterval(timerId);
+                        alert('Focus session complete!');
+                    }
+                }, 1000);
+                btnIcon.textContent = 'pause';
+                btnText.textContent = 'Pause';
+            }
+            isRunning = !isRunning;
+        }
+
+        startBtn.addEventListener('click', toggleTimer);
+        
+        resetBtn.addEventListener('click', () => {
+            clearInterval(timerId);
+            isRunning = false;
+            timeLeft = 1500;
+            updateDisplay();
+            btnIcon.textContent = 'play_arrow';
+            btnText.textContent = 'Start Focus';
+        });
+
+        // Mode Switching UI Interaction
+        const modes = ['mode-focus', 'mode-short', 'mode-long'];
+        modes.forEach(id => {
+            document.getElementById(id).addEventListener('click', (e) => {
+                modes.forEach(m => {
+                    const el = document.getElementById(m);
+                    el.classList.remove('bg-primary', 'text-on-primary');
+                    el.classList.add('text-on-surface-variant', 'hover:bg-surface-variant/50');
+                });
+                e.target.classList.add('bg-primary', 'text-on-primary');
+                e.target.classList.remove('text-on-surface-variant', 'hover:bg-surface-variant/50');
+                
+                // Set times
+                if(id === 'mode-focus') timeLeft = 1500;
+                else if(id === 'mode-short') timeLeft = 300;
+                else timeLeft = 900;
+                
+                clearInterval(timerId);
+                isRunning = false;
+                updateDisplay();
+                btnIcon.textContent = 'play_arrow';
+                btnText.textContent = id === 'mode-focus' ? 'Start Focus' : 'Start Break';
+            });
+        });
+
+        updateDisplay();
+    </script>
+</body></html>

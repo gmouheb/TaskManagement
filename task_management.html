@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tasks - Serene Interval</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@200;500;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e6e9e7",
+                    "on-surface-variant": "#424843",
+                    "on-secondary-container": "#526576",
+                    "on-tertiary-fixed": "#3c0700",
+                    "surface-container": "#eceeec",
+                    "tertiary-fixed-dim": "#ffb4a2",
+                    "outline-variant": "#c2c8c1",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#4d6072",
+                    "surface-container-highest": "#e1e3e1",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#e87356",
+                    "on-tertiary-fixed-variant": "#822711",
+                    "secondary-fixed": "#d1e5f9",
+                    "inverse-primary": "#adcfb5",
+                    "on-primary-fixed-variant": "#304d39",
+                    "tertiary-fixed": "#ffdad2",
+                    "on-tertiary-container": "#5d1000",
+                    "tertiary": "#a23e26",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#173422",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f2f4f2",
+                    "surface": "#f8faf8",
+                    "secondary-fixed-dim": "#b5c9dd",
+                    "on-secondary-fixed": "#081d2c",
+                    "primary-fixed-dim": "#adcfb5",
+                    "on-background": "#191c1b",
+                    "on-secondary-fixed-variant": "#364959",
+                    "error-container": "#ffdad6",
+                    "primary": "#476550",
+                    "outline": "#727972",
+                    "surface-bright": "#f8faf8",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#cee2f6",
+                    "inverse-on-surface": "#eff1ef",
+                    "inverse-surface": "#2e3130",
+                    "primary-fixed": "#c9ebd0",
+                    "surface-tint": "#476550",
+                    "background": "#f8faf8",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#032110",
+                    "surface-variant": "#e1e3e1",
+                    "primary-container": "#7d9d85",
+                    "surface-dim": "#d8dad9",
+                    "on-surface": "#191c1b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "xl": "80px",
+                    "xs": "4px",
+                    "md": "24px",
+                    "container-max": "1200px",
+                    "sm": "12px",
+                    "lg": "48px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Manrope"],
+                    "display-timer-mobile": ["Manrope"],
+                    "display-timer": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-timer-mobile": ["80px", {"lineHeight": "80px", "letterSpacing": "-0.04em", "fontWeight": "200"}],
+                    "display-timer": ["120px", {"lineHeight": "120px", "letterSpacing": "-0.04em", "fontWeight": "200"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .task-card-shadow {
+            box-shadow: 0 10px 30px rgba(77, 96, 114, 0.04);
+        }
+        .task-card-shadow:hover {
+            box-shadow: 0 15px 40px rgba(77, 96, 114, 0.08);
+        }
+        .custom-bezier {
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-surface-container-lowest shadow-sm flex flex-col gap-base p-md z-50">
+<div class="mb-lg">
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim tracking-tight">Serene Interval</h1>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">Focusing...</p>
+</div>
+<nav class="flex flex-col gap-2">
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="timer">timer</span>
+<span class="font-body-md">Timer</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl font-semibold cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="checklist">checklist</span>
+<span class="font-body-md">Tasks</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-md">Analytics</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</div>
+</nav>
+<div class="mt-auto pt-md flex items-center gap-3 px-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUPK-nS9xHB6h3xuFCiDEe3xvXEzXIH8izX1LoJuMOUXO8wCWNHsw5RNepeCT4G0yHVjpxO7P4XxzmHEuwH9gOGqTtRI3f3LSHRX37DeLpDwPOqi3C8xTWQ03gcNmQE6MzWGR9KZXEk5g4Sn6NoSuh42vldxH1R4Nyraz6p21QsZrTVUnRVuQ83KtJqwyEbnIr9d_W378DsPcnbMkXukQQdNX5e-OtB4zOQa0I6I8VnFo3wFFnHZziKMZDY4n6dAYaNLcZufLoEW9l"/>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold">Alex Rivera</span>
+<span class="text-xs text-on-surface-variant">Focus Master</span>
+</div>
+</div>
+</aside>
+<!-- TopAppBar Anchor -->
+<header class="flex justify-between items-center h-16 px-md ml-64 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md docked full-width top-0 sticky z-40">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md font-semibold text-primary dark:text-primary-fixed-dim">Task Management</h2>
+</div>
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/30 transition-all active:scale-90">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/30 transition-all active:scale-90">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-lg max-w-[1200px] mx-auto min-h-screen">
+<!-- Header Section -->
+<section class="mb-xl flex justify-between items-end">
+<div>
+<p class="font-label-caps text-label-caps text-on-secondary-fixed-variant mb-2 uppercase tracking-widest">Active Focus</p>
+<h3 class="font-headline-lg text-headline-lg text-on-background">Organize your flow.</h3>
+</div>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-semibold flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-md" onclick="document.getElementById('task-input').focus()">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                New Task
+            </button>
+</section>
+<!-- New Task Input Card -->
+<div class="mb-lg bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/30 task-card-shadow custom-bezier">
+<div class="flex gap-4 items-center">
+<div class="flex-grow">
+<input class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-primary focus:bg-white transition-all text-body-lg placeholder:text-outline" id="task-input" placeholder="What are we focusing on next?" type="text"/>
+</div>
+<div class="flex gap-3 items-center">
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-bold text-outline mb-1 uppercase tracking-tighter">Poms</span>
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-2 rounded-lg">
+<span class="material-symbols-outlined text-sm cursor-pointer hover:text-primary" data-icon="remove">remove</span>
+<span class="font-bold text-primary">2</span>
+<span class="material-symbols-outlined text-sm cursor-pointer hover:text-primary" data-icon="add">add</span>
+</div>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-bold text-outline mb-1 uppercase tracking-tighter">Priority</span>
+<select class="bg-surface-container-low border-none rounded-lg py-2 pl-3 pr-8 text-sm font-medium focus:ring-primary">
+<option>Low</option>
+<option selected="">Medium</option>
+<option>High</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Task List Container -->
+<div class="space-y-4" id="task-list">
+<!-- Task Item 1 (High Priority) -->
+<div class="group flex items-center gap-4 bg-white p-5 rounded-xl border border-outline-variant/20 task-card-shadow custom-bezier transform hover:-translate-y-1">
+<div class="cursor-grab active:cursor-grabbing text-outline/40 group-hover:text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="drag_indicator">drag_indicator</span>
+</div>
+<div class="relative flex items-center justify-center">
+<input class="w-6 h-6 rounded-full border-2 border-primary-container text-primary focus:ring-primary-container transition-all cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg text-body-lg font-medium text-on-surface">Finalize UI Brand Anchors</h4>
+<div class="flex items-center gap-4 mt-1">
+<span class="flex items-center gap-1 text-xs font-semibold text-tertiary uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> High
+                        </span>
+<span class="flex items-center gap-1 text-xs font-medium text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="timer">timer</span> 4 Poms
+                        </span>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-lg text-error">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Task Item 2 (Medium Priority) -->
+<div class="group flex items-center gap-4 bg-white p-5 rounded-xl border border-outline-variant/20 task-card-shadow custom-bezier transform hover:-translate-y-1">
+<div class="cursor-grab active:cursor-grabbing text-outline/40 group-hover:text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="drag_indicator">drag_indicator</span>
+</div>
+<div class="relative flex items-center justify-center">
+<input class="w-6 h-6 rounded-full border-2 border-primary-container text-primary focus:ring-primary-container transition-all cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg text-body-lg font-medium text-on-surface">Design System Documentation</h4>
+<div class="flex items-center gap-4 mt-1">
+<span class="flex items-center gap-1 text-xs font-semibold text-primary uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Medium
+                        </span>
+<span class="flex items-center gap-1 text-xs font-medium text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="timer">timer</span> 2 Poms
+                        </span>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-lg text-error">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Task Item 3 (Low Priority - Completed) -->
+<div class="group flex items-center gap-4 bg-surface-container-low/50 p-5 rounded-xl border border-transparent custom-bezier opacity-60">
+<div class="cursor-grab active:cursor-grabbing text-outline/20">
+<span class="material-symbols-outlined" data-icon="drag_indicator">drag_indicator</span>
+</div>
+<div class="relative flex items-center justify-center">
+<input checked="" class="w-6 h-6 rounded-full border-2 border-primary-container text-primary-container focus:ring-primary-container transition-all cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg text-body-lg font-medium text-on-surface line-through">Review user feedback logs</h4>
+<div class="flex items-center gap-4 mt-1">
+<span class="flex items-center gap-1 text-xs font-semibold text-on-secondary-container uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Low
+                        </span>
+<span class="flex items-center gap-1 text-xs font-medium text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="timer">timer</span> 1 Pom
+                        </span>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-error-container/20 rounded-lg text-error">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- Task Item 4 (Medium Priority) -->
+<div class="group flex items-center gap-4 bg-white p-5 rounded-xl border border-outline-variant/20 task-card-shadow custom-bezier transform hover:-translate-y-1">
+<div class="cursor-grab active:cursor-grabbing text-outline/40 group-hover:text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="drag_indicator">drag_indicator</span>
+</div>
+<div class="relative flex items-center justify-center">
+<input class="w-6 h-6 rounded-full border-2 border-primary-container text-primary focus:ring-primary-container transition-all cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-lg text-body-lg font-medium text-on-surface">Weekly Team Sync</h4>
+<div class="flex items-center gap-4 mt-1">
+<span class="flex items-center gap-1 text-xs font-semibold text-primary uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Medium
+                        </span>
+<span class="flex items-center gap-1 text-xs font-medium text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="timer">timer</span> 3 Poms
+                        </span>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-lg text-error">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State Illustration/Quote -->
+<div class="mt-xl text-center flex flex-col items-center">
+<div class="w-64 h-64 mb-base grayscale opacity-30">
+<img alt="Serene background" class="w-full h-full object-contain" data-alt="A minimalist digital illustration of a calm, zen garden with smooth pebbles and a single sage green leaf floating on still water. The lighting is ethereal and soft, creating a sense of deep focus and tranquility. The background is a clean, off-white surface that fits perfectly within a modern light-mode UI design. Slate blue shadows add depth without being harsh, embodying the calm-tech philosophy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmysJ4bmR1fyQxeV6frsNdZBt7AZj4wW-TBVXPwZOWlkvBB0Mr-DIvY4rRldU1H9vOiAxoDnnTY9U3vrMb9sBb6z6lvEkgpBj0QBJit-yTkBNbqJjO2XctMKwrdgwanbpZ8jIrdiqcCarTFtCV_YDDxpPOCzoW6vQ3l0I9wVKt9QHDlEoA3y3mu2riFoIoDFJIY9t0RoL6U8BEVn44Q8zRVPMGpR3RsTPKNyS39HI9evK1-xHTbGU81k6lNmIbjkxpYyctBkLGDy_c"/>
+</div>
+<p class="text-on-surface-variant font-body-md italic">"Concentrate all your thoughts upon the work at hand."</p>
+</div>
+</main>
+<!-- Contextual FAB Suppression: Hide on Task List per instructions, but adding as a hidden ref for pattern -->
+<!-- The FAB is suppressed as per: "You MUST suppress the FAB on Settings, Profile, Details, and Transactional screens." 
+         While this is a 'Main' screen, the primary task addition is inline. -->
+<script>
+        // Micro-interactions for task list
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const card = this.closest('.group');
+                if (this.checked) {
+                    card.classList.add('opacity-60', 'bg-surface-container-low/50');
+                    card.classList.remove('bg-white', 'task-card-shadow', 'hover:-translate-y-1');
+                    card.querySelector('h4').classList.add('line-through');
+                } else {
+                    card.classList.remove('opacity-60', 'bg-surface-container-low/50');
+                    card.classList.add('bg-white', 'task-card-shadow', 'hover:-translate-y-1');
+                    card.querySelector('h4').classList.remove('line-through');
+                }
+            });
+        });
+
+        // Simple Drag and Drop Mock
+        const taskList = document.getElementById('task-list');
+        let draggedItem = null;
+
+        taskList.addEventListener('dragstart', (e) => {
+            draggedItem = e.target.closest('.group');
+            setTimeout(() => e.target.closest('.group').style.display = 'none', 0);
+        });
+
+        taskList.addEventListener('dragend', (e) => {
+            setTimeout(() => {
+                draggedItem.style.display = 'flex';
+                draggedItem = null;
+            }, 0);
+        });
+
+        taskList.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            const afterElement = getDragAfterElement(taskList, e.clientY);
+            if (afterElement == null) {
+                taskList.appendChild(draggedItem);
+            } else {
+                taskList.insertBefore(draggedItem, afterElement);
+            }
+        });
+
+        function getDragAfterElement(container, y) {
+            const draggableElements = [...container.querySelectorAll('.group:not(.dragging)')];
+            return draggableElements.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = y - box.top - box.height / 2;
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).element;
+        }
+    </script>
+</body></html>

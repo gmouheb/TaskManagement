@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Serene Interval - Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@200;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e6e9e7",
+                        "on-surface-variant": "#424843",
+                        "on-secondary-container": "#526576",
+                        "on-tertiary-fixed": "#3c0700",
+                        "surface-container": "#eceeec",
+                        "tertiary-fixed-dim": "#ffb4a2",
+                        "outline-variant": "#c2c8c1",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#4d6072",
+                        "surface-container-highest": "#e1e3e1",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#e87356",
+                        "on-tertiary-fixed-variant": "#822711",
+                        "secondary-fixed": "#d1e5f9",
+                        "inverse-primary": "#adcfb5",
+                        "on-primary-fixed-variant": "#304d39",
+                        "tertiary-fixed": "#ffdad2",
+                        "on-tertiary-container": "#5d1000",
+                        "tertiary": "#a23e26",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#173422",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f2f4f2",
+                        "surface": "#f8faf8",
+                        "secondary-fixed-dim": "#b5c9dd",
+                        "on-secondary-fixed": "#081d2c",
+                        "primary-fixed-dim": "#adcfb5",
+                        "on-background": "#191c1b",
+                        "on-secondary-fixed-variant": "#364959",
+                        "error-container": "#ffdad6",
+                        "primary": "#476550",
+                        "outline": "#727972",
+                        "surface-bright": "#f8faf8",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#cee2f6",
+                        "inverse-on-surface": "#eff1ef",
+                        "inverse-surface": "#2e3130",
+                        "primary-fixed": "#c9ebd0",
+                        "surface-tint": "#476550",
+                        "background": "#f8faf8",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#032110",
+                        "surface-variant": "#e1e3e1",
+                        "primary-container": "#7d9d85",
+                        "surface-dim": "#d8dad9",
+                        "on-surface": "#191c1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "container-max": "1200px",
+                        "sm": "12px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "display-timer": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-timer": ["120px", {"lineHeight": "120px", "letterSpacing": "-0.04em", "fontWeight": "200"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #f8faf8; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-shadow {
+            box-shadow: 0 10px 30px rgba(77, 96, 114, 0.04);
+        }
+        .progress-bar-ease {
+            transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background">
+<!-- Side Navigation Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-surface-container-lowest shadow-sm flex flex-col gap-base p-md z-50">
+<div class="mb-lg px-4">
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim tracking-tight">Serene Interval</h1>
+<p class="text-on-surface-variant font-body-md text-sm">Focusing...</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">timer</span>
+<span>Timer</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">checklist</span>
+<span>Tasks</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl font-semibold cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl cursor-pointer active:scale-95" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto flex items-center gap-3 px-4 py-3 border-t border-outline-variant/30 pt-md">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a person with a serene expression, softly lit with natural morning light. The background is a blurred office with organic green plants, matching a calm tech aesthetic with muted sage and cream colors. High-quality portrait photography with shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKglc6-9YY7Cnywpp2qInRomLg2YV-wg70SOEev6Clm3lfHDhZe0N1DOCmpYpsDwTlCHUTYDhP6EYj-TU7L-2PPJs2ZDdiayknp1Qd--bz8cnTOMCVKtHFmVV8DIXRfPwSoLQTjnk45gNFf9c8kf_ter0oeOIpSvrh7KpZ0_vEyEzqmCETTWoqf6yWgz3D_59BkXS_-dlaycnZLevbNICgvM0_zqVUzGGDhEova-4jVEpy5kT-SFD96eSFt2OCehjTYkO-bUL2Dr9E"/>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-sm">Alex Rivera</span>
+<span class="text-xs text-on-surface-variant">Focus Master</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center h-16 px-md bg-surface/80 backdrop-blur-md sticky top-0 z-40">
+<h2 class="font-headline-md text-headline-md font-semibold text-primary">Analytics</h2>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">account_circle</span>
+</button>
+</div>
+</header>
+<div class="max-w-[1200px] mx-auto p-lg space-y-lg">
+<!-- Bento Grid Metrics -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Total Focus Time -->
+<div class="bg-surface-container-lowest p-md rounded-xl soft-shadow border border-surface-container transition-all hover:scale-[1.02]">
+<div class="flex justify-between items-start mb-4">
+<span class="text-on-surface-variant font-label-caps text-label-caps">Total Focus Time</span>
+<span class="material-symbols-outlined text-primary p-2 bg-primary-fixed rounded-lg">schedule</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg text-on-background">24h 45m</span>
+<span class="text-primary text-xs font-semibold flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12% from last week
+                        </span>
+</div>
+</div>
+<!-- Pomodoros Completed -->
+<div class="bg-surface-container-lowest p-md rounded-xl soft-shadow border border-surface-container transition-all hover:scale-[1.02]">
+<div class="flex justify-between items-start mb-4">
+<span class="text-on-surface-variant font-label-caps text-label-caps">Pomodoros Done</span>
+<span class="material-symbols-outlined text-tertiary p-2 bg-tertiary-fixed rounded-lg">verified</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg text-on-background">52</span>
+<span class="text-on-surface-variant text-xs mt-1">Target: 60 per month</span>
+</div>
+</div>
+<!-- Daily Streak -->
+<div class="bg-surface-container-lowest p-md rounded-xl soft-shadow border border-surface-container transition-all hover:scale-[1.02]">
+<div class="flex justify-between items-start mb-4">
+<span class="text-on-surface-variant font-label-caps text-label-caps">Daily Streak</span>
+<span class="material-symbols-outlined text-secondary p-2 bg-secondary-fixed rounded-lg">bolt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg text-on-background">12 Days</span>
+<span class="text-on-surface-variant text-xs mt-1">Personal Best: 18 Days</span>
+</div>
+</div>
+</section>
+<!-- Weekly Focus Activity Chart -->
+<section class="bg-surface-container-lowest p-lg rounded-xl soft-shadow border border-surface-container">
+<div class="flex justify-between items-center mb-lg">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background">Weekly Activity</h3>
+<p class="text-on-surface-variant text-sm">Hours spent in focus sessions</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container hover:bg-surface-container-high rounded-full text-sm font-medium transition-colors">Week</button>
+<button class="px-4 py-2 hover:bg-surface-container rounded-full text-sm font-medium transition-colors">Month</button>
+</div>
+</div>
+<div class="h-64 flex items-end justify-between gap-4 px-4">
+<!-- Chart Bars -->
+<div class="flex-1 flex flex-col items-center gap-4">
+<div class="w-full bg-primary-fixed-dim/20 rounded-full h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary-container progress-bar-ease rounded-t-full" style="height: 65%;"></div>
+</div>
+<span class="text-xs font-label-caps text-on-surface-variant">Mon</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-4">
+<div class="w-full bg-primary-fixed-dim/20 rounded-full h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary progress-bar-ease rounded-t-full" style="height: 40%;"></div>
+</div>
+<span class="text-xs font-label-caps text-on-surface-variant">Tue</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-4">
+<div class="w-full bg-primary-fixed-dim/20 rounded-full h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary progress-bar-ease rounded-t-full" style="height: 85%;"></div>
+</div>
+<span class="text-xs font-label-caps text-on-surface-variant">Wed</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-4">
+<div class="w-full bg-primary-fixed-dim/20 rounded-full h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary progress-bar-ease rounded-t-full" style="height: 55%;"></div>
+</div>
+<span class="text-xs font-label-caps text-on-surface-variant">Thu</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-4">
+<div class="w-full bg-primary-fixed-dim/20 rounded-full h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary-container progress-bar-ease rounded-t-full" style="height: 30%;"></div>
+</div>
+<span class="text-xs font-label-caps text-on-surface-variant">Fri</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-4">
+<div class="w-full bg-primary-fixed-dim/20 rounded-full h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-secondary-fixed progress-bar-ease rounded-t-full" style="height: 20%;"></div>
+</div>
+<span class="text-xs font-label-caps text-on-surface-variant">Sat</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-4">
+<div class="w-full bg-primary-fixed-dim/20 rounded-full h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-secondary-fixed progress-bar-ease rounded-t-full" style="height: 15%;"></div>
+</div>
+<span class="text-xs font-label-caps text-on-surface-variant">Sun</span>
+</div>
+</div>
+</section>
+<!-- Bottom Section: Recently Completed & Insights -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-md">
+<!-- Recently Completed Tasks -->
+<section class="bg-surface-container-lowest p-lg rounded-xl soft-shadow border border-surface-container">
+<h3 class="font-headline-md text-headline-md text-on-background mb-base">Recent Successes</h3>
+<div class="space-y-4 mt-6">
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-surface transition-colors border border-transparent hover:border-outline-variant/30">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<p class="font-body-md font-medium text-on-background">System Architecture Review</p>
+<p class="text-xs text-on-surface-variant">Completed in 3 Pomodoros • Today</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-surface transition-colors border border-transparent hover:border-outline-variant/30">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<p class="font-body-md font-medium text-on-background">Product Roadmap Refinement</p>
+<p class="text-xs text-on-surface-variant">Completed in 1 Pomodoro • Yesterday</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-surface transition-colors border border-transparent hover:border-outline-variant/30">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<p class="font-body-md font-medium text-on-background">Newsletter Draft &amp; Editing</p>
+<p class="text-xs text-on-surface-variant">Completed in 2 Pomodoros • Oct 24</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Focus Insights Card -->
+<section class="bg-primary text-on-primary p-lg rounded-xl soft-shadow overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md mb-2">Focus Insight</h3>
+<p class="text-primary-fixed opacity-90 body-lg mb-8 leading-relaxed">
+                            You are most productive on <span class="font-bold">Wednesday mornings</span> between 9:00 AM and 11:30 AM. Sessions during this time last 15% longer on average.
+                        </p>
+<button class="bg-primary-fixed text-on-primary-fixed px-6 py-3 rounded-full font-semibold transition-transform active:scale-95 hover:shadow-lg flex items-center gap-2">
+<span>Optimize Schedule</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -bottom-10 -right-10 w-48 h-48 bg-primary-container/20 rounded-full blur-3xl"></div>
+<div class="absolute -top-10 -left-10 w-32 h-32 bg-secondary-container/10 rounded-full blur-2xl"></div>
+</section>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions and subtle loading effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.progress-bar-ease');
+            bars.forEach(bar => {
+                const height = bar.style.height;
+                bar.style.height = '0%';
+                setTimeout(() => {
+                    bar.style.height = height;
+                }, 100);
+            });
+
+            // Smooth scale effect for cards on hover
+            const cards = document.querySelectorAll('.soft-shadow');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-2px)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body></html>
